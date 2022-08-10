@@ -6,6 +6,7 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use PHPUnit\Exception;
 
 class TaskController extends Controller
 {
@@ -28,8 +29,12 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request): JsonResponse
     {
-        $task = Task::query()->create($request->validated());
-        return $this->sendApiResponse(Task::query()->find($task->id));
+        try {
+            $task = Task::query()->create($request->validated());
+            return $this->sendApiResponse(Task::query()->find($task->id));
+        } catch (Exception $exception) {
+            return $this->sendApiResponse(null, 'Server Error', 'ServerError', [], 500);
+        }
     }
 
 
@@ -42,7 +47,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task): JsonResponse
     {
-        $task->update($request->only('status'));
-        return $this->sendApiResponse($task);
+        try {
+            $task->update($request->only('status'));
+            return $this->sendApiResponse($task);
+        } catch (Exception $exception) {
+            return $this->sendApiResponse(null, 'Server Error', 'ServerError', [], 500);
+        }
     }
 }
