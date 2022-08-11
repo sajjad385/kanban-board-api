@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "2dbbc56c-b1c9-4c83-a539-bd0b38d15b80",
+		"name": "Kanban_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Task 1\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
